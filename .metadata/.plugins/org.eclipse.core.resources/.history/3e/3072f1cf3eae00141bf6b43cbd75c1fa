@@ -1,0 +1,22 @@
+package com.example.bluetooth_app;
+
+import android.bluetooth.BluetoothAdapter;
+import android.content.Intent;
+
+public class Bluetooth {
+	private BluetoothAdapter mBluetoothAdapter;
+	
+	public Bluetooth() {
+		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+	}
+	
+	public boolean getAdapter() {
+		if (!mBluetoothAdapter.isEnabled()) {
+		    Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+		    Bluetooth_App.this.startActivityForResult(enableBtIntent, 1);
+		}
+		
+		return true;
+	}
+	
+}
