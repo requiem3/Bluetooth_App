@@ -7,5 +7,5 @@ import android.bluetooth.BluetoothSocket;
 import junit.framework.TestCase;
 
 public class Bluetooth_tests extends TestCase {
-
+	
 }

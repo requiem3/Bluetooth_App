@@ -14,7 +14,7 @@ public class Bluetooth_App extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bluetooth__app);
 		
-		final Bluetooth bT = new Bluetooth();
+		final Bluetooth bT = new Bluetooth(this); //Pass this activity to the class
 		
 		bT.isCompat();
 		bT.getAdapter();
