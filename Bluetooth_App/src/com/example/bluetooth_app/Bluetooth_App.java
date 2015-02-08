@@ -6,18 +6,34 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.bluetooth_app.Bluetooth;
+import java.util.ArrayList;  
+import java.util.Arrays;
+import android.widget.ArrayAdapter;  
+import android.widget.ListView;
 
 public class Bluetooth_App extends ActionBarActivity {
-	
+	private Bluetooth bT;
+	private ListView mainListView ;  
+	private ArrayAdapter<String> listAdapter ;  
+	  
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bluetooth__app);
 		
-		final Bluetooth bT = new Bluetooth(this); //Pass this activity to the class
+		bT = new Bluetooth(this);
 		
 		bT.isCompat();
 		bT.getAdapter();
+		bT.pairedDevices();
+		
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		
+		bT.destroy();
 	}
 
 	@Override
