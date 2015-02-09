@@ -1,0 +1,21 @@
+package com.example.bluetooth_app;
+
+import android.content.Context;
+import android.bluetooth.BluetoothAdapter;
+import android.os.Handler;
+
+public class Chat {
+	private BluetoothAdapter mBluetoothAdapter; 
+	private int state; //Current state of the class(none, listening, connected, or connecting)
+	private final Handler chatHandle;
+	
+	public Chat(Context context, Handler handler) {
+		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		state = 0;
+		chatHandle = handler;
+	}
+	
+	public int getState() {
+		return state;
+	}
+}

@@ -1,0 +1,26 @@
+package com.example.bluetooth_app;
+
+public class Threads extends Thread {
+	private acceptNewThread anThread;
+	private newConnectionThread ncThread;
+	private alreadyConnectedThread acThread;
+	
+	public void startThreads() {
+		anThread = new acceptNewThread();
+		ncThread = new newConnectionThread();
+		acThread = new alreadyConnectedThread();
+		
+	}
+	
+	private class acceptNewThread {
+		
+	}
+	
+	private class newConnectionThread {
+		
+	}
+	
+	private class alreadyConnectedThread {
+		
+	}
+}

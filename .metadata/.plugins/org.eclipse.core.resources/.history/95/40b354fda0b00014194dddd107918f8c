@@ -37,7 +37,7 @@ public class Bluetooth {
 		sButton.setOnClickListener(new View.OnClickListener() { //Listener to check if button is pressed
 			public void onClick(View v) { //If button is pressed start discovering and hide button
 				startDiscovering();
-				sButton.setVisibility(constants.INVISIBLE); //Make button invisible
+				sButton.setVisibility(4); //Make button invisible
 			}
 		});
 		
@@ -140,7 +140,7 @@ public class Bluetooth {
                 }
                 // When discovery is finished, change the Activity title
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-            	sButton.setVisibility(constants.VISIBLE); //Make button visible again
+            	sButton.setVisibility(0); //Make button visible again
                 if (nDevices.getCount() == 0) {
                 	sButton.setText("none");
                     //TODO: none found do something

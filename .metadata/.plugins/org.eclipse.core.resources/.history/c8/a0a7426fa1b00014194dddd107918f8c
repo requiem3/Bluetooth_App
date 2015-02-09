@@ -1,0 +1,6 @@
+package com.example.bluetooth_app;
+
+public class Constants {
+	public static int VISIBLE = 0;
+	public static int INVISIBLE = 4;
+}
