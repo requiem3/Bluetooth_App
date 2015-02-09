@@ -25,7 +25,6 @@ public class Bluetooth_App extends ActionBarActivity {
 		
 		bT.isCompat();
 		bT.getAdapter();
-		bT.pairedDevices();
 		
 	}
 	

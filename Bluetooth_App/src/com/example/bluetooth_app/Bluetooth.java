@@ -21,6 +21,7 @@ public class Bluetooth {
 	private ArrayAdapter<String> nDevices; //Array adapter for storing newly discovered devices
 	private IntentFilter filter; //Filter for catching bluetooth device actions
 	private Button sButton; //Scan button
+	private Button pButton; //Paired Button
 	private ListView lvBox; //listview box
     
 	/**
@@ -38,11 +39,21 @@ public class Bluetooth {
 			}
 		});
 		
+		pButton = (Button) activity.findViewById(R.id.pairedButton); //pButton = pairedButton
+		pButton.setOnClickListener(new View.OnClickListener() { //Listener to check if button is pressed
+			public void onClick(View v) { //If button is pressed find al paired devices and populate listView
+				pairedDevices();
+			}
+		});
+		
 		//Setup array adapter for already paired devices
 		lvBox = (ListView) activity.findViewById(R.id.deviceList);
         pDevices = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1);
         lvBox.setAdapter(pDevices);
 		
+        nDevices = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1);
+        lvBox.setAdapter(nDevices);
+        
         // Register for broadcasts when a device is discovered
         filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         activity.registerReceiver(mReceiver, filter);
@@ -82,7 +93,7 @@ public class Bluetooth {
 			mBluetoothAdapter.cancelDiscovery(); //cancel discovering devices
 		}
 		
-		activity.unregisterReceiver(mReceiver);
+		activity.unregisterReceiver(mReceiver); //unregister receiver
 	}
 	
 	/**
@@ -100,6 +111,7 @@ public class Bluetooth {
 		Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
 		// If there are paired devices
 		if (pairedDevices.size() > 0) {
+			pDevices.clear();
 		    // Loop through paired devices
 		    for (BluetoothDevice device : pairedDevices) {
 		        // Add the name and address to an array adapter to show in a ListView
@@ -109,8 +121,7 @@ public class Bluetooth {
 	}
 	
     /**
-     * The BroadcastReceiver that listens for discovered devices and changes the title when
-     * discovery is finished
+     * The BroadcastReceiver that listens for discovered devices
      */
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -123,7 +134,7 @@ public class Bluetooth {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 // If it's already paired, skip it, because it's been listed already
                 if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
-                  
+                	nDevices.add(device.getName() + "\n" + device.getAddress());
                 }
                 // When discovery is finished, change the Activity title
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
@@ -131,6 +142,7 @@ public class Bluetooth {
                 if (nDevices.getCount() == 0) {
                 	sButton.setText("none");
                     //TODO: none found do something
+                	nDevices.add("No devices found");
                 }
             }
         }

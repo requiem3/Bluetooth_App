@@ -351,7 +351,6 @@ int id action_settings 0x7f090042
 int id activity_chooser_view_content 0x7f090021
 int id always 0x7f090014
 int id beginning 0x7f09001b
-int id button1 0x7f090041
 int id checkbox 0x7f090029
 int id collapseActionView 0x7f090015
 int id decor_content_parent 0x7f09002f
@@ -375,6 +374,7 @@ int id middle 0x7f09001d
 int id never 0x7f090017
 int id none 0x7f09000f
 int id normal 0x7f09000b
+int id pairedButton 0x7f090041
 int id progress_circular 0x7f090007
 int id progress_horizontal 0x7f090008
 int id radio 0x7f09002b
