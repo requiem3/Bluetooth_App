@@ -18,7 +18,6 @@ public class Chat {
 	 * @param handler
 	 */
 	public Chat(Context context, Handler handler) {
-		constants = new Constants();
 		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		state = constants.SNONE; //Current state is nothing, just initialized, derp
 		chatHandle = handler; 

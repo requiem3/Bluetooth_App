@@ -30,6 +30,7 @@ public class Bluetooth {
 	 * default constructor, basic initializations
 	 */
 	public Bluetooth(Activity activity) {
+		constants = new Constants();
 		this.activity = activity; //Set class activity to the activity passed to it by the main activity window
 		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		 
@@ -41,7 +42,6 @@ public class Bluetooth {
 			}
 		});
 		
-		sButton.setText("Scan1");
 		
 		pButton = (Button) activity.findViewById(R.id.pairedButton); //pButton = pairedButton
 		pButton.setOnClickListener(new View.OnClickListener() { //Listener to check if button is pressed
@@ -55,9 +55,9 @@ public class Bluetooth {
         pDevices = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1);
         lvBox.setAdapter(pDevices);
 		
-        //give this a try for fixing the discovery bug
-        nDevices = new ArrayAdapter<String>(activity, R.layout.activity_bluetooth__app);
-        //lvBox.setAdapter(nDevices);
+        
+        nDevices = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1);
+        lvBox.setAdapter(nDevices);
         
         // Register for broadcasts when a device is discovered
         filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
@@ -145,7 +145,6 @@ public class Bluetooth {
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
             	sButton.setVisibility(constants.VISIBLE); //Make button visible again
                 if (nDevices.getCount() == 0) {
-                	sButton.setText("none");
                     //TODO: none found do something
                 	nDevices.add("No devices found");
                 }
