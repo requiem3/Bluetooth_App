@@ -41,8 +41,6 @@ public class Bluetooth {
 			}
 		});
 		
-		sButton.setText("Scan1");
-		
 		pButton = (Button) activity.findViewById(R.id.pairedButton); //pButton = pairedButton
 		pButton.setOnClickListener(new View.OnClickListener() { //Listener to check if button is pressed
 			public void onClick(View v) { //If button is pressed find al paired devices and populate listView
@@ -55,7 +53,7 @@ public class Bluetooth {
         pDevices = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1);
         lvBox.setAdapter(pDevices);
 		
-        //give this a try for fixing the discovery bug
+        //give this a try for fixing the discoery bug
         nDevices = new ArrayAdapter<String>(activity, R.layout.activity_bluetooth__app);
         //lvBox.setAdapter(nDevices);
         
