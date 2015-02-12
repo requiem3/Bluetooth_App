@@ -1,7 +1,6 @@
 package com.example.bluetooth_app;
 
 import java.util.Set;
-import com.example.bluetooth_app.Constants;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -144,7 +143,7 @@ public class Bluetooth {
                 // When discovery is finished, change the Activity title
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
             	sButton.setVisibility(constants.VISIBLE); //Make button visible again
-                if (nDevices.getCount() == 0) {
+                if (nDevices.getCount() == 0) { 
                     //TODO: none found do something
                 	nDevices.add("No devices found");
                 }

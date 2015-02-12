@@ -1,20 +1,12 @@
 package com.example.bluetooth_app;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.bluetooth_app.Bluetooth;
-import java.util.ArrayList;  
-import java.util.Arrays;
-import android.widget.ArrayAdapter;  
-import android.widget.ListView;
-
 public class Bluetooth_App extends ActionBarActivity {
 	private Bluetooth bT;
-	private ListView mainListView ;  
-	private ArrayAdapter<String> listAdapter ;  
 	  
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
